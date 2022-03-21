@@ -55,6 +55,15 @@ private final Map<String, Integer> OPERATORS = new HashMap<>();
 
 ## TT1
 
+### Java Generic `T` and Java Iterable
+> `T` is the iterator variable. Iterators are used to retrieve elements one by one. Every class that implements Iterable interface appropriately, can be used in the enhanced For loop (for-each loop). The need to implement the Iterator interface arises while designing custom data structures.
+
+### Queue
+> Add to the end of the queue but remove from the beginning. Has head and tail.
+
+### Stack
+> Only needs a head.
+
 ## TT2
 
 ## TT3
