@@ -62,16 +62,18 @@ private final Map<String, Integer> OPERATORS = new HashMap<>();
 > Add to the end of the queue but remove from the beginning. Has head and tail.
 
 ```java
+public void add(T data) {
+    // add new object to end of Queue
+    LinkedList<T> tail = new LinkedList<>(data, null);
+    if (head == null)  // initial condition
+      this.head = this.tail = tail;
+    else {  // nodes in queue
+      this.tail.setNextNode(tail); // current tail points to new tail
+      this.tail = tail;  // update tail
+    }
+  }
+
 public void delete(){
-    if(head == null){
-        throw new RuntimeException();
-    }
-    if(head.getNext() == null){
-        tail = null;
-    }
-    else{
-        head.getNext().setPrevNode(tail);
-    }
     head = head.getNext();
 }
 ```
