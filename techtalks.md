@@ -61,8 +61,25 @@ private final Map<String, Integer> OPERATORS = new HashMap<>();
 ### Queue
 > Add to the end of the queue but remove from the beginning. Has head and tail.
 
+```java
+public void delete(){
+    if(head == null){
+        throw new RuntimeException();
+    }
+    if(head.getNext() == null){
+        tail = null;
+    }
+    else{
+        head.getNext().setPrevNode(tail);
+    }
+    head = head.getNext();
+}
+```
+
 ### Stack
 > Only needs a head.
+
+
 
 ## TT2
 
