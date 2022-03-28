@@ -81,9 +81,68 @@ public void delete(){
 ### Stack
 > Only needs a head.
 
-
-
 ## TT2
+
+### Calculator
+1. Tokenize
+2. Put Numbers into List and if Operator, compare for precedence. (RPN)
+3. Pop entries: numbers go into a list and if operator, do calculations.
+4. Kill numbers and operator becomes result.
+5. Put result back into list and repeat until there is nothing left.
+
+```java
+// Takes RPN and produces a final result
+private void rpnToResult()
+{
+    // Stack used to hold calculation while process RPN
+    Stack calculation = new Stack();
+
+    // for loop to process RPN
+    for(int i = 0; i < this.reverse_polish.size(); i++)
+    {
+        // If the token is a number
+        if (isNumeric(this.reverse_polish.get(i))){
+          // Push number to stack
+          calculation.push(this.reverse_polish.get(i));
+        }
+        // else
+        else{
+          // Pop the two top entries
+          // Based off of Token operator calculate result
+          // Push result back onto the stack
+          if(this.reverse_polish.get(i) == "sqrt") {
+            Double num = Double.parseDouble(calculation.pop().toString());
+            calculation.push(Math.pow(num, 0.5));
+          }
+          else {
+            Double num2 = Double.parseDouble(calculation.pop().toString());
+            Double num1 = Double.parseDouble(calculation.pop().toString());
+            switch(this.reverse_polish.get(i)){
+                case "+":
+                    calculation.push(num1 + num2);
+                    break;
+                case "-":
+                    calculation.push(num1 - num2);
+                    break;
+                case "*":
+                    calculation.push(num1 * num2);
+                    break;
+                case "/":
+                    calculation.push(num1 / num2);
+                    break;
+                case "%":
+                    calculation.push(num1 % num2);
+                    break;
+                case "^" :
+                    calculation.push(Math.pow(num1, num2));
+          }
+        }
+      }
+    }
+    // Pop final result and set as final result for expression
+    result = (Double) calculation.pop();
+}
+```
 
 ## TT3
 
